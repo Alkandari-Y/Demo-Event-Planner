@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{event.name}}{% endblock title%}
+
+{% block content %}
+    {% if event %}
+    <form action="{% url 'event_update'  event.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit">Update</button>
+    </form>
+    {% else %}
+        <p>Event does not exist!</p>
+    {% endif %}
+{% endblock content %}
+

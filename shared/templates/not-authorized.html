@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Unauthorized
+{% endblock title %}
+
+{% block content %}
+
+<p>Access Denied!</p>
+<p>Please <a href="{% url 'login' %}">login</a> with the correct credentials</p>
+
+{% endblock content %}
+

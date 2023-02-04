@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{event.name}}
+{% endblock title %}
+
+{% block content %}
+<div class="row my-4">
+    {% if event %}
+    <div class="col-3 mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{event.thumbnail.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{event.name}}</h5>
+                <p class="card-text">By: {{event.organizer.username}}</p>
+                <p>{{event.start_date|date:"d M Y"}}</p>
+                {% if user.is_authenticated %}
+                <a href="#" class="btn btn-primary">Book</a>
+                    {% if user == event.organizer %}
+                    <a href="{% url 'event_update'  event.id %}">Edit</a>
+                    <a href="{% url 'event_delete'  event.id %}">Delete</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>Not found!</p>
+    {% endif %}
+</div>
+{% endblock content %}
+
+
+
+
+
+

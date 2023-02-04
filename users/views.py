@@ -15,6 +15,7 @@ def register_view(request):
                 user = form.save(commit=False)
                 user.set_password(password)
                 user.save()
+                login(request, user)
                 return redirect('home')
             else:
                 message = 'Passwords must match'
