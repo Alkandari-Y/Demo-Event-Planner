@@ -11,7 +11,7 @@ urlpatterns = [
     path('', event_views.get_index, name='home'),
     path('auth/register/', auth_views.register_view, name='register'),
     path('auth/login/', auth_views.login_view, name='login'),
-
+    path('auth/logout/', auth_views.logout_view, name='logout'),
 ]
 
 if settings.DEBUG:
