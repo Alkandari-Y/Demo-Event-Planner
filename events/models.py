@@ -7,7 +7,9 @@ User = get_user_model()
 
 class Event(models.Model):
     name = models.CharField(max_length=50)
-    thumbnail = models.ImageField(upload_to='events', blank=True, default='events/default.png')
+    thumbnail = models.ImageField(
+        upload_to="events", blank=True, default="events/default.png"
+    )
     description = models.CharField(max_length=255)
     number_seats = models.PositiveIntegerField(
         validators=[
@@ -26,4 +28,3 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
